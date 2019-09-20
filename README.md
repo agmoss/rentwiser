@@ -1,3 +1,6 @@
+This is a work in progress rebuild of [The Calgary Project](https://github.com/agmoss/calgary-project)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
