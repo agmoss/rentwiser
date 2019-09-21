@@ -7,13 +7,10 @@ class SampleContent extends Component {
         }
     }
 
-    /**
-     * **Render the presentation component**
-     */
     render() {
         return (
             <div>
-                <p>Hello</p>
+                <h1>{this.props.content}</h1>
             </div>
         )
     }

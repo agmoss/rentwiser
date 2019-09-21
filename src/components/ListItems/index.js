@@ -1,13 +1,14 @@
 import React from 'react';
+
+// Material UI
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
+import HomeIcon from '@material-ui/icons/Home'
 import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
+import MapIcon from '@material-ui/icons/Map';
+import InformationIcon from '@material-ui/icons/Info'
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
 
@@ -19,25 +20,25 @@ export const mainListItems = (
 	<div>
 		<ListItemLink button href="/">
 			<ListItemIcon>
-				<DashboardIcon />
+				<HomeIcon />
 			</ListItemIcon>
 			<ListItemText primary="Home" />
 		</ListItemLink>
 		<ListItemLink button href="/dashboard">
 			<ListItemIcon>
-				<DashboardIcon />
+				<BarChartIcon />
 			</ListItemIcon>
 			<ListItemText primary="Dashboard" />
 		</ListItemLink>
 		<ListItemLink button href="/map">
 			<ListItemIcon>
-				<ShoppingCartIcon />
+				<MapIcon />
 			</ListItemIcon>
 			<ListItemText primary="Map" />
 		</ListItemLink>
 		<ListItemLink button href="/about">
 			<ListItemIcon>
-				<PeopleIcon />
+				<InformationIcon/>
 			</ListItemIcon>
 			<ListItemText primary="About" />
 		</ListItemLink>
