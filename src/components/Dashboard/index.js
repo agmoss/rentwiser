@@ -25,7 +25,7 @@ import InformationIcon from '@material-ui/icons/Info'
 
 // Components
 import SampleContent from '../SampleContent';
-import DashContent from '../DashContent';
+import {DashContent} from '../DashContent';
 import { mainListItems, secondaryListItems } from '../ListItems';
 
 // Functions and Variables
@@ -64,7 +64,7 @@ export default function Dashboard() {
 						<MenuIcon />
 					</IconButton>
 					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-						The Calgary Project
+						RentWiser
           			</Typography>
 					<IconButton color="inherit">
 						<Badge badgeContent={4} color="secondary">
