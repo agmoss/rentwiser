@@ -1,17 +1,19 @@
 {
-  "name": "calgaryproject",
+  "name": "rentwiser",
   "version": "0.1.0",
   "private": true,
   "author": "Andrew Moss",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agmoss/calgaryproject.git"
+    "url": "https://github.com/agmoss/rentwiser.git"
   },
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",
+    "apexcharts": "^3.8.6",
     "react": "^16.9.0",
+    "react-apexcharts": "^1.3.3",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.2",
