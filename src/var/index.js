@@ -78,6 +78,6 @@ export default makeStyles(theme => ({
 		flexDirection: 'column',
 	},
 	fixedHeight: {
-		height: 340,
+		height: 400,
 	},
 }));

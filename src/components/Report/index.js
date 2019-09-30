@@ -1,6 +1,6 @@
-/* eslint-disable no-script-url */
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from '../Title';
@@ -11,16 +11,40 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Report() {
+export default function Report(props) {
+
   const classes = useStyles();
+
+  const [mean, setMean] = useState('-')
+  const [min, setMin] = useState('-')
+  const [max, setMax] = useState('-')
+
+  useEffect(() => {
+    async function fetchData() {
+      const responseMean = await axios(`https://api-cr.azurewebsites.net/api/price/mean/${props.location}/${props.propertyType}/1`);
+      setMean(responseMean.data.val);
+      const responseMin = await axios(`https://api-cr.azurewebsites.net/api/price/min/${props.location}/${props.propertyType}/1`);
+      setMin(responseMin.data.val);
+      const responseMax = await axios(`https://api-cr.azurewebsites.net/api/price/max/${props.location}/${props.propertyType}/1`);
+      setMax(responseMax.data.val);
+    }
+    fetchData();
+  }, [props.location, props.propertyType]); // Or [] if effect doesn't need props or state (place query here)
+
   return (
     <React.Fragment>
       <Title>Report</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        {mean}
+      </Typography>
+      <Typography component="p" variant="h4">
+        {max}
+      </Typography>
+      <Typography component="p" variant="h4">
+        {min}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+        {new Date().getTime()}
       </Typography>
     </React.Fragment>
   );

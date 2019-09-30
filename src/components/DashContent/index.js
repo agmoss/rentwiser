@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
@@ -11,7 +11,6 @@ import Select from '@material-ui/core/Select';
 
 // Components
 import LineChart from '../LineChart';
-import ScatterChart from '../ScatterChart';
 import Report from '../Report';
 
 const useStyles = makeStyles(theme => ({
@@ -31,28 +30,17 @@ const useStyles = makeStyles(theme => ({
 export const DashContent = (props) => {
 
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        location: '',
-        propertyType: '',
-        name: '--',
-    });
 
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-        setLabelWidth(inputLabel.offsetWidth);
-    }, []);
+    const [propertyType,setPropertyType] = useState('all');
+    const [location,setLocation] = useState('all');
 
-    function handleChange(event) {
-        setValues(oldValues => ({
-            ...oldValues,
-            [event.target.name]: event.target.value,
-        }));
+    function handlePtypeChange(event){
+        setPropertyType(event.target.value)
     }
 
-    //Testing
-    console.log(values.propertyType);
-    console.log(values.location);
+    function handleLocationChange(event){
+        setLocation(event.target.value)
+    }
 
     /**
      * **Render the presentation component**
@@ -71,8 +59,8 @@ export const DashContent = (props) => {
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="location-simple">Location</InputLabel>
                                 <Select
-                                    value={values.location}
-                                    onChange={handleChange}
+                                    value={location}
+                                    onChange={handleLocationChange}
                                     inputProps={{
                                         name: 'location',
                                         id: 'location-simple',
@@ -92,8 +80,8 @@ export const DashContent = (props) => {
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="propertyType-simple">Property Type</InputLabel>
                                 <Select
-                                    value={values.propertyType}
-                                    onChange={handleChange}
+                                    value={propertyType}
+                                    onChange={handlePtypeChange}
                                     inputProps={{
                                         name: 'propertyType',
                                         id: 'propertyType-simple',
@@ -112,19 +100,13 @@ export const DashContent = (props) => {
                 {/* Report */}
                 <Grid item xs={12} md={4} lg={3}>
                     <Paper className={props.fixedHeightPaper}>
-                        <Report />
+                        <Report propertyType={propertyType} location={location}/>
                     </Paper>
                 </Grid>
                 {/* Line Chart */}
                 <Grid item xs={12} md={8} lg={9}>
                     <Paper className={props.fixedHeightPaper}>
-                        <LineChart />
-                    </Paper>
-                </Grid>
-                {/* ScatterChart */}
-                <Grid item xs={12}>
-                    <Paper className={props.paperClass}>
-                        <ScatterChart />
+                        <LineChart propertyType={propertyType} location={location}/>
                     </Paper>
                 </Grid>
             </Grid>

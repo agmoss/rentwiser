@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import ApexCharts from 'apexcharts';
 
-// Not in use
+
 class LineChart extends Component {
 
     constructor(props) {
         super(props);
         this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
-
         this.state = {
             ts: '-',
             chartOptionsArea: {
@@ -47,10 +45,10 @@ class LineChart extends Component {
                     },
                     selection: {
                         enabled: true,
-                        xaxis: {
-                            min: new Date('19 Dec 2018').getTime(),
-                            max: new Date('14 Sept 2019').getTime()
-                        }
+                        // xaxis: {
+                        //     min: new Date('19 Dec 2018').getTime(),
+                        //     max: new Date('30 Sept 2019').getTime()
+                        // }
                     },
                 },
                 colors: ['#008FFB'],
@@ -74,25 +72,9 @@ class LineChart extends Component {
             },
             series: [
                 {
-                    name: "Appartment",
+                    name: "timeseries",
                     data: null
                 },
-                {
-                    name: "Townhouse",
-                    data:null
-                },
-                {
-                    name: "House",
-                    data:null
-                },
-                {
-                    name: "Duplex",
-                    data:null
-                },
-                {
-                    name: "Condo",
-                    data:null
-                }
             ],
         }
 
@@ -101,8 +83,15 @@ class LineChart extends Component {
     componentDidMount() {
 
         // Chart data
-        this.getDataFor('/ts_data', 'ts');
+        this.getDataFor(`/ts/${this.props.location}/${this.props.propertyType}/1`, 'ts');
 
+    }
+
+    componentDidUpdate() {
+
+        // Chart data
+        this.getDataFor(`/ts/${this.props.location}/${this.props.propertyType}/1`, 'ts');
+        
     }
 
     /**
@@ -123,34 +112,15 @@ class LineChart extends Component {
 
                     if (value === 'ts') {
 
-                        var appart = this.timeSeries(d,"Apartment");
-                        var town = this.timeSeries(d,"Townhouse");
-                        var house = this.timeSeries(d,"House");
-                        var duplex = this.timeSeries(d,"Duplex");
-                        var condo = this.timeSeries(d,"Condo");
+                        var data = this.timeSeries(d)
 
+                        console.log(data);
 
                         this.setState({
                             series: [
                                 {
-                                    name: "Appartment",
-                                    data: Object.entries(appart)
-                                },
-                                {
-                                    name: "Townhouse",
-                                    data:Object.entries(town)
-                                },
-                                {
-                                    name: "House",
-                                    data:Object.entries(house)
-                                },
-                                {
-                                    name: "Duplex",
-                                    data:Object.entries(duplex)
-                                },
-                                {
-                                    name: "Condo",
-                                    data:Object.entries(condo)
+                                    name: "timeseries",
+                                    data: Object.entries(data)
                                 }
                             ],
                         })
@@ -163,13 +133,11 @@ class LineChart extends Component {
         })
     }
 
-    timeSeries(data,type) {
+    timeSeries(data) {
 
-        data = data[type]
+        data = data['price']
 
-        let newObj = Object.assign({}, ...Object.keys(data).map(k => ({[new Date(k)] : data[k].toFixed(2)} )));
-
-        return newObj;
+        return Object.assign({}, ...Object.keys(data).map(k => ({ [new Date(k)]: data[k] })));
 
     }
 

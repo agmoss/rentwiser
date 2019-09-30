@@ -26,7 +26,7 @@ import InformationIcon from '@material-ui/icons/Info'
 // Components
 import SampleContent from '../SampleContent';
 import {DashContent} from '../DashContent';
-import { mainListItems, secondaryListItems } from '../ListItems';
+import { secondaryListItems } from '../ListItems';
 
 // Functions and Variables
 import { Copyright, ListItemLink } from '../../functions'
