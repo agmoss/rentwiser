@@ -48,6 +48,7 @@ export default function Dashboard() {
 		setCurrentSelection(val);
 	}
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+	const fixedHeightPaper2 = clsx(classes.paper, classes.fixedHeight2)
 
 	return (
 		<div className={classes.root}>
@@ -125,7 +126,7 @@ export default function Dashboard() {
 							case 'home':
 								return <SampleContent content={currentSelection} />
 							case 'dashboard':
-								return <DashContent fixedHeightPaper={fixedHeightPaper} classesPaper={classes.paper} />
+								return <DashContent fixedHeightPaper={fixedHeightPaper} fixedHeightPaper2={fixedHeightPaper2} classesPaper={classes.paper} />
 							case 'map':
 								return <SampleContent content={currentSelection} />
 							case 'about':

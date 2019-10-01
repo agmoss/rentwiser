@@ -12,6 +12,7 @@ import Select from '@material-ui/core/Select';
 // Components
 import LineChart from '../LineChart';
 import Report from '../Report';
+import RadialChart from '../RadialChart';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,14 +32,14 @@ export const DashContent = (props) => {
 
     const classes = useStyles();
 
-    const [propertyType,setPropertyType] = useState('all');
-    const [location,setLocation] = useState('all');
+    const [propertyType, setPropertyType] = useState('all');
+    const [location, setLocation] = useState('all');
 
-    function handlePtypeChange(event){
+    function handlePtypeChange(event) {
         setPropertyType(event.target.value)
     }
 
-    function handleLocationChange(event){
+    function handleLocationChange(event) {
         setLocation(event.target.value)
     }
 
@@ -48,13 +49,10 @@ export const DashContent = (props) => {
     return (
 
         <React.Fragment>
-
-
             <Grid container spacing={3}>
                 {/* Select */}
                 <Grid item xs={12} md={12} lg={12}>
                     <Paper>
-
                         <form className={classes.root} autoComplete="off">
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="location-simple">Location</InputLabel>
@@ -66,7 +64,6 @@ export const DashContent = (props) => {
                                         id: 'location-simple',
                                     }}
                                 >
-
                                     <MenuItem value={'NW'}>NW</MenuItem>
                                     <MenuItem value={'NE'}>NE</MenuItem>
                                     <MenuItem value={'SW'}>SW</MenuItem>
@@ -100,13 +97,25 @@ export const DashContent = (props) => {
                 {/* Report */}
                 <Grid item xs={12} md={4} lg={3}>
                     <Paper className={props.fixedHeightPaper}>
-                        <Report propertyType={propertyType} location={location}/>
+                        <Report propertyType={propertyType} location={location} />
+                    </Paper>
+                </Grid>
+                {/* Radial */}
+                <Grid item xs={12} md={4} lg={3}>
+                    <Paper className={props.fixedHeightPaper}>
+                        <RadialChart />
+                    </Paper>
+                </Grid>
+                {/* Radial */}
+                <Grid item xs={12} md={4} lg={3}>
+                    <Paper className={props.fixedHeightPaper}>
+                        <RadialChart />
                     </Paper>
                 </Grid>
                 {/* Line Chart */}
-                <Grid item xs={12} md={8} lg={9}>
-                    <Paper className={props.fixedHeightPaper}>
-                        <LineChart propertyType={propertyType} location={location}/>
+                <Grid item xs={12} md={12} lg={12}>
+                    <Paper className={props.fixedHeightPaper2}>
+                        <LineChart propertyType={propertyType} location={location} />
                     </Paper>
                 </Grid>
             </Grid>
