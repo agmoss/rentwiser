@@ -76,11 +76,6 @@ class RadialChartContainer extends Component {
 
             React.createElement(RadialChart, { options: this.state.options, series: this.state.series })
             
-
-            // <div id="radialChart">
-            //     <ReactApexChart options={this.state.options} series={this.state.series} type="radialBar" height="200" />
-            // </div>
-
         );
     }
 }
