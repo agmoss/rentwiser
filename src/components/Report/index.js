@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+
 
 // MaterialUI
 import { makeStyles } from '@material-ui/core/styles';
@@ -35,22 +35,6 @@ export default function Report(props) {
 
   const classes = useStyles();
 
-  const [mean, setMean] = useState(0)
-  const [min, setMin] = useState(0)
-  const [max, setMax] = useState(0)
-
-  useEffect(() => {
-    async function fetchData() {
-      const responseMean = await axios(`https://api-cr.azurewebsites.net/api/price/mean/${props.location}/${props.community}/${props.propertyType}/1`);
-      setMean(responseMean.data.val);
-      const responseMin = await axios(`https://api-cr.azurewebsites.net/api/price/min/${props.location}/${props.community}/${props.propertyType}/1`);
-      setMin(Number(responseMin.data.val));
-      const responseMax = await axios(`https://api-cr.azurewebsites.net/api/price/max/${props.location}/${props.community}/${props.propertyType}/1`);
-      setMax(Number(responseMax.data.val));
-    }
-    fetchData();
-  }, [props.location, props.community, props.propertyType]); // Or [] if effect doesn't need props or state (place query here)
-
   return (
     <React.Fragment>
 
@@ -65,7 +49,7 @@ export default function Report(props) {
           </Typography>
 
           <Typography variant='subtitle1'>
-            {(mean).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            {(props.mean).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
           </Typography>
 
           <Typography  variant="h6">
@@ -73,7 +57,7 @@ export default function Report(props) {
           </Typography>
 
           <Typography >
-            {(max).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            {(props.max).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
           </Typography>
 
           <Typography  variant="h6">
@@ -81,7 +65,7 @@ export default function Report(props) {
           </Typography>
 
           <Typography >
-            {(min).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            {(props.min).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
           </Typography>
 
         </CardContent>

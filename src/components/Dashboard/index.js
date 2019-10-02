@@ -10,9 +10,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 // Components
-import LineChart from '../LineChart';
-import Report from '../Report';
-import RadialChart from '../RadialChart';
+import ReportContainer from '../../containers/Report';
+import LineChartContainer from '../../containers/LineChart';
+import RadialChartContainer from '../../containers/RadialChart';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -127,19 +127,19 @@ export const Dashboard = (props) => {
                 {/* Report */}
                 <Grid item xs={12} md={4} lg={3}>
                     <Paper className={props.fixedHeightPaper}>
-                        <Report location={location} community={community} propertyType={propertyType} />
+                        <ReportContainer location={location} community={community} propertyType={propertyType} />
                     </Paper>
                 </Grid>
                 {/* Radial */}
                 <Grid item xs={12} md={4} lg={3}>
                     <Paper className={props.fixedHeightPaper}>
-                        <RadialChart location={location} community={community} propertyType={propertyType} />
+                        <RadialChartContainer location={location} community={community} propertyType={propertyType} />
                     </Paper>
                 </Grid>
                 {/* Line Chart */}
                 <Grid item xs={12} md={12} lg={12}>
                     <Paper className={props.fixedHeightPaper2}>
-                        <LineChart location={location} community={community} propertyType={propertyType} />
+                        <LineChartContainer location={location} community={community} propertyType={propertyType} />
                     </Paper>
                 </Grid>
             </Grid>
