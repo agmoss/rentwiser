@@ -41,15 +41,15 @@ export default function Report(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const responseMean = await axios(`https://api-cr.azurewebsites.net/api/price/mean/${props.location}/${props.propertyType}/1`);
+      const responseMean = await axios(`https://api-cr.azurewebsites.net/api/price/mean/${props.location}/${props.community}/${props.propertyType}/1`);
       setMean(responseMean.data.val);
-      const responseMin = await axios(`https://api-cr.azurewebsites.net/api/price/min/${props.location}/${props.propertyType}/1`);
+      const responseMin = await axios(`https://api-cr.azurewebsites.net/api/price/min/${props.location}/${props.community}/${props.propertyType}/1`);
       setMin(Number(responseMin.data.val));
-      const responseMax = await axios(`https://api-cr.azurewebsites.net/api/price/max/${props.location}/${props.propertyType}/1`);
+      const responseMax = await axios(`https://api-cr.azurewebsites.net/api/price/max/${props.location}/${props.community}/${props.propertyType}/1`);
       setMax(Number(responseMax.data.val));
     }
     fetchData();
-  }, [props.location, props.propertyType]); // Or [] if effect doesn't need props or state (place query here)
+  }, [props.location, props.community, props.propertyType]); // Or [] if effect doesn't need props or state (place query here)
 
   return (
     <React.Fragment>

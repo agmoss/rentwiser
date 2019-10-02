@@ -83,14 +83,14 @@ class LineChart extends Component {
     componentDidMount() {
 
         // Chart data
-        this.getDataFor(`/ts/${this.props.location}/${this.props.propertyType}/1`, 'ts');
+        this.getDataFor(`/ts/${this.props.location}/${this.props.community}/${this.props.propertyType}/0`, 'ts');
 
     }
 
     componentDidUpdate() {
 
         // Chart data
-        this.getDataFor(`/ts/${this.props.location}/${this.props.propertyType}/1`, 'ts');
+        this.getDataFor(`/ts/${this.props.location}/${this.props.community}/${this.props.propertyType}/0`, 'ts');
         
     }
 
@@ -113,8 +113,6 @@ class LineChart extends Component {
                     if (value === 'ts') {
 
                         var data = this.timeSeries(d)
-
-                        console.log(data);
 
                         this.setState({
                             series: [
@@ -145,11 +143,11 @@ class LineChart extends Component {
 
         return (
 
-            <div id="charts">
-                <div id="chart1">
+            <div id="lineCharts">
+                <div id="lineChart1">
                     <ReactApexChart options={this.state.chartOptionsArea} series={this.state.series} type="line" height="300" />
                 </div>
-                <div id="chart2">
+                <div id="lineChart2">
                     <ReactApexChart options={this.state.chartOptionsBrush} series={this.state.series} type="area" height="100" />
                 </div>
             </div>
