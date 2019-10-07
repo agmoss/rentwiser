@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
+
+// Apexcharts
 import ReactApexChart from 'react-apexcharts';
 
+// MaterialUI
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
-class RadialChart extends React.Component {
 
-    constructor(props) {
-        super(props);
+class RadialChart extends Component {
 
-        this.state = {
-            options: {
-                plotOptions: {
-                    radialBar: {
-                        hollow: {
-                            size: '70%',
-                        }
-                    },
-                },
-                labels: ['Cricket']
-            },
-            series: [70],
-        }
-    }
 
     render() {
         return (
 
-            <div id="chart">
-                <ReactApexChart options={this.state.options} series={this.state.series} type="radialBar" height="200" />
-            </div>
+            <Grid item xs={12} md={4} lg={3}>
+                <Paper className={this.props.fixedHeightPaper}>
+                    <ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="200" />
+                </Paper>
+            </Grid>
+
+            // <div id="radialChart">
+            //     <ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="200" />
+            // </div>
 
         );
     }
