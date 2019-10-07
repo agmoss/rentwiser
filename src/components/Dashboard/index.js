@@ -8,7 +8,7 @@ import {SelectDDL} from '../Select';
 import PriceReport from '../../containers/PriceReport';
 import LineChartContainer from '../../containers/LineChart';
 import MarketReport from '../MarketReport';
-import ScatterChart from '../ScatterChart';
+import ScatterChartContainer from '../../containers/ScatterChart';
 
 export const Dashboard = (props) => {
 
@@ -47,7 +47,7 @@ export const Dashboard = (props) => {
                 <MarketReport fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
 
                 {/* Temporary */}
-                <ScatterChart/>
+                <ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
 
                 {/* Line Chart */}
                 <LineChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
