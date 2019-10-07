@@ -14,15 +14,11 @@ class RadialChart extends Component {
     render() {
         return (
 
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={12} lg={12}>
                 <Paper className={this.props.fixedHeightPaper}>
-                    <ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="200" />
+                    <ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="225" />
                 </Paper>
             </Grid>
-
-            // <div id="radialChart">
-            //     <ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="200" />
-            // </div>
 
         );
     }
