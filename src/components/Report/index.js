@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import Title from '../Title';
 
@@ -36,48 +38,52 @@ export default function Report(props) {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
 
-      <Card className={classes.card}>
-        <CardContent>
-          <Title className={classes.title} color="primary" gutterBottom>
-            Report
+    <Grid item xs={12} md={4} lg={3}>
+      <Paper className={props.fixedHeightPaper}>
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Title className={classes.title} color="primary" gutterBottom>
+              Report
           </Title>
 
-          <Typography  variant="h6">
-            Mean
+            <Typography variant="h6">
+              Mean
           </Typography>
 
-          <Typography variant='subtitle1'>
-            {(props.mean).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            <Typography variant='subtitle1'>
+              {(props.mean).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            </Typography>
+
+            <Typography variant="h6">
+              Max
           </Typography>
 
-          <Typography  variant="h6">
-            Max
+            <Typography >
+              {(props.max).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            </Typography>
+
+            <Typography variant="h6">
+              Min
           </Typography>
 
-          <Typography >
-            {(props.max).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
-          </Typography>
+            <Typography >
+              {(props.min).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+            </Typography>
 
-          <Typography  variant="h6">
-            Min
-          </Typography>
+          </CardContent>
 
-          <Typography >
-            {(props.min).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
-          </Typography>
+          <CardActions>
+            <Typography color="textSecondary" className={classes.depositContext}>
+              {new Date().getTime()}
+            </Typography>
+          </CardActions>
 
-        </CardContent>
+        </Card>
 
-        <CardActions>
-          <Typography color="textSecondary" className={classes.depositContext}>
-            {new Date().getTime()}
-          </Typography>
-        </CardActions>
+      </Paper>
+    </Grid>
 
-      </Card>
-
-    </React.Fragment>
   );
 }

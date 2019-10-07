@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 // Components
 import {SelectDDL} from '../Select';
@@ -41,25 +40,19 @@ export const Dashboard = (props) => {
         <React.Fragment>
             <Grid container spacing={3}>
 
+                {/* Select Buttons */}
                 <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange}  />
-                {/* Report */}
-                <Grid item xs={12} md={4} lg={3}>
-                    <Paper className={props.fixedHeightPaper}>
-                        <ReportContainer location={location} community={community} propertyType={propertyType} />
-                    </Paper>
-                </Grid>
-                {/* Radial */}
-                <Grid item xs={12} md={4} lg={3}>
-                    <Paper className={props.fixedHeightPaper}>
-                        <RadialChartContainer location={location} community={community} propertyType={propertyType} />
-                    </Paper>
-                </Grid>
+
+                {/* Rental Report */}
+                <ReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+
+                {/* Radial Chart */}
+                <RadialChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+
                 {/* Line Chart */}
-                <Grid item xs={12} md={12} lg={12}>
-                    <Paper className={props.fixedHeightPaper2}>
-                        <LineChartContainer location={location} community={community} propertyType={propertyType} />
-                    </Paper>
-                </Grid>
+                <LineChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+
+
             </Grid>
 
         </React.Fragment>
