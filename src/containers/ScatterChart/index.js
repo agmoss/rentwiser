@@ -11,6 +11,9 @@ class ScatterChartContainer extends Component {
         this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
 
         this.state = {
+            location: this.props.location,
+            community:this.props.community,
+            propertyType:this.props.propertyType,
             options: {
                 chart: {
                     zoom: {
@@ -43,16 +46,26 @@ class ScatterChartContainer extends Component {
 
     componentDidMount() {
 
-        // Chart data
-        this.getDataFor(`/scatter/${this.props.location}/${this.props.community}/${this.props.propertyType}/1`, 'val');
+        this.chartData()
 
     }
 
-    componentDidUpdate() {
 
-        // Chart data
-        this.getDataFor(`/scatter/${this.props.location}/${this.props.community}/${this.props.propertyType}/1`, 'val');
+    chartData(){
 
+        this.getDataFor(`/scatter/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'val');
+
+    }
+
+    componentWillReceiveProps(nextProps){
+
+        // Prevent un necessary re-render
+        if (nextProps.location !== this.state.location || nextProps.community !== this.state.community || nextProps.propertyType !== this.state.propertyType) {
+
+            this.setState({location: nextProps.location,community: nextProps.community, propertyType: nextProps.propertyType}, async () => {
+                this.chartData();
+            });
+        }
     }
 
     /**
@@ -91,6 +104,7 @@ class ScatterChartContainer extends Component {
     }
 
     render() {
+        console.log('here')
         return (
             React.createElement(ScatterChart, { options: this.state.options, series: this.state.series })
         );

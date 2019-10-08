@@ -7,8 +7,12 @@ class RadialChartContainer extends Component {
 
     constructor(props) {
         super(props);
+        
         this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
         this.state = {
+            location: this.props.location,
+            community:this.props.community,
+            propertyType:this.props.propertyType,
             val: 0,
             options: {
                 plotOptions: {
@@ -26,17 +30,22 @@ class RadialChartContainer extends Component {
 
 
     componentDidMount() {
-
-        // Chart data
-        this.getDataFor(`/market/${this.props.location}/${this.props.community}/${this.props.propertyType}/1`, 'val');
-
+        this.chartData()
     }
 
-    componentDidUpdate() {
+    chartData(){
+        this.getDataFor(`/market/${this.state.location}/${this.state.community}/${this.state.propertyType}/1`, 'val');
+    }
 
-        // Chart data
-        this.getDataFor(`/market/${this.props.location}/${this.props.community}/${this.props.propertyType}/1`, 'val');
+    componentWillReceiveProps(nextProps){
 
+        // Prevent un necessary re-render
+        if (nextProps.location !== this.state.location || nextProps.community !== this.state.community || nextProps.propertyType !== this.state.propertyType) {
+
+            this.setState({location: nextProps.location,community: nextProps.community, propertyType: nextProps.propertyType}, async () => {
+                this.chartData();
+            });
+        }
     }
 
     /**

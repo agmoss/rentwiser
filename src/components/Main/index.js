@@ -20,7 +20,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home'
 import BarChartIcon from '@material-ui/icons/BarChart';
 import MapIcon from '@material-ui/icons/Map';
-import InformationIcon from '@material-ui/icons/Info'
+import InformationIcon from '@material-ui/icons/Info';
 
 
 // Components
@@ -29,7 +29,7 @@ import {Dashboard} from '../Dashboard';
 import { secondaryListItems } from '../ListItems';
 
 // Functions and Variables
-import { Copyright, ListItemLink } from '../../functions'
+import { Copyright, ListItemLink } from '../../functions';
 import useStyles from '../../var';
 
 

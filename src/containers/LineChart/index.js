@@ -9,6 +9,9 @@ class LineChartContainer extends Component {
         super(props);
         this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
         this.state = {
+            location: this.props.location,
+            community:this.props.community,
+            propertyType:this.props.propertyType,
             ts: '-',
             chartOptionsArea: {
 
@@ -46,10 +49,6 @@ class LineChartContainer extends Component {
                     },
                     selection: {
                         enabled: true,
-                        // xaxis: {
-                        //     min: new Date('19 Dec 2018').getTime(),
-                        //     max: new Date('30 Sept 2019').getTime()
-                        // }
                     },
                 },
                 colors: ['#008FFB'],
@@ -82,17 +81,23 @@ class LineChartContainer extends Component {
     }
 
     componentDidMount() {
-
-        // Chart data
-        this.getDataFor(`/ts/${this.props.location}/${this.props.community}/${this.props.propertyType}/0`, 'ts');
-
+        this.chartData()
     }
 
-    componentDidUpdate() {
+    chartData(){
+        this.getDataFor(`/ts/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'ts');
+    }
 
-        // Chart data
-        this.getDataFor(`/ts/${this.props.location}/${this.props.community}/${this.props.propertyType}/0`, 'ts');
-        
+
+    componentWillReceiveProps(nextProps){
+
+        // Prevent un necessary re-render
+        if (nextProps.location !== this.state.location || nextProps.community !== this.state.community || nextProps.propertyType !== this.state.propertyType) {
+
+            this.setState({location: nextProps.location,community: nextProps.community, propertyType: nextProps.propertyType}, async () => {
+                this.chartData();
+            });
+        }
     }
 
     /**
