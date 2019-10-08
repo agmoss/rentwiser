@@ -4,11 +4,15 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 // Components
-import {SelectDDL} from '../Select';
+import { SelectDDL } from '../Select';
 import PriceReport from '../../containers/PriceReport';
 import LineChartContainer from '../../containers/LineChart';
 import MarketReport from '../MarketReport';
 import ScatterChartContainer from '../../containers/ScatterChart';
+
+
+// Loading spinner
+import LoadingOverlay from 'react-loading-overlay';
 
 export const Dashboard = (props) => {
 
@@ -16,16 +20,23 @@ export const Dashboard = (props) => {
     const [community, setCommunity] = useState('all');
     const [propertyType, setPropertyType] = useState('all');
 
+    const [loading, setLoading] = useState(true);
+
     function handlePtypeChange(event) {
         setPropertyType(event.target.value)
     }
 
+    // Not in use
     function handleLocationChange(event) {
         setLocation(event.target.value)
     }
 
     function handleCommunityChange(event) {
         setCommunity(event.target.value)
+    }
+
+    function updateLoading(status) {
+        setLoading(status)
     }
 
     /**
@@ -35,10 +46,20 @@ export const Dashboard = (props) => {
 
         <React.Fragment>
 
+            {/* Loading Spinner */}
+            <LoadingOverlay
+                active={loading}
+                styles={{
+                    wrapper: {}
+                }}
+                spinner
+                text='Loading ...'
+            ></LoadingOverlay>
+
             <Grid container spacing={3}>
 
                 {/* Select Buttons */}
-                <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange}  />
+                <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange} />
 
                 {/* Rental Price Report */}
                 <PriceReport fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
@@ -47,10 +68,10 @@ export const Dashboard = (props) => {
                 <MarketReport fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
 
                 {/* Temporary */}
-                <ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+                <ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
                 {/* Line Chart */}
-                <LineChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+                <LineChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading}  />
 
             </Grid>
 

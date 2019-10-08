@@ -8,7 +8,8 @@ class ScatterChartContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
+        //this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
+        this.BASE_URL = 'http://localhost:8000/api';
 
         this.state = {
             location: this.props.location,
@@ -23,6 +24,19 @@ class ScatterChartContainer extends Component {
                     toolbar: {
                         show: false,
                     },
+                    animations: {
+                        enabled: true,
+                        easing: 'easeinout',
+                        speed: 100,
+                        animateGradually: {
+                            enabled: true,
+                            delay: 150
+                        },
+                        dynamicAnimation: {
+                            enabled: true,
+                            speed: 100
+                        }
+                    }
                 },
                 xaxis:{
                     title:{
@@ -44,16 +58,17 @@ class ScatterChartContainer extends Component {
         }
     }
 
-    componentDidMount() {
-
-        this.chartData()
-
+    async componentDidMount() {
+        
+        await this.chartData();
+        this.props.updateLoading(false);
+        
     }
 
 
-    chartData(){
+    async chartData(){
 
-        this.getDataFor(`/scatter/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'val');
+        await this.getDataFor(`/scatter/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'val');
 
     }
 
