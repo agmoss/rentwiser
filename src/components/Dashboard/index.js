@@ -5,9 +5,10 @@ import Grid from '@material-ui/core/Grid';
 
 // Components
 import { SelectDDL } from '../Select';
-import PriceReport from '../../containers/PriceReport';
+import PriceReportContainer from '../../containers/PriceReport';
 import LineChartContainer from '../../containers/LineChart';
-import MarketReport from '../MarketReport';
+//import MarketReport from '../MarketReport';
+import MarketReportContainer from '../../containers/MarketReport';
 import ScatterChartContainer from '../../containers/ScatterChart';
 
 
@@ -62,10 +63,10 @@ export const Dashboard = (props) => {
                 <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange} />
 
                 {/* Rental Price Report */}
-                <PriceReport fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+                <PriceReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
 
                 {/* Rental Market Report */}
-                <MarketReport fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+                <MarketReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
 
                 {/* Temporary */}
                 <ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />

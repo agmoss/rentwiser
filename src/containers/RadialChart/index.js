@@ -13,7 +13,8 @@ class RadialChartContainer extends Component {
             location: this.props.location,
             community:this.props.community,
             propertyType:this.props.propertyType,
-            val: 0,
+            active: 0,
+            total: 0,
             options: {
                 plotOptions: {
                     radialBar: {
@@ -22,9 +23,9 @@ class RadialChartContainer extends Component {
                         }
                     },
                 },
-                labels: ['Market Share']
+                labels: ['Active Market Share','Total Market Share']
             },
-            series: [0],
+            series: [],
         }
     }
 
@@ -33,9 +34,17 @@ class RadialChartContainer extends Component {
         this.chartData()
     }
 
-    chartData(){
-        this.getDataFor(`/market/${this.state.location}/${this.state.community}/${this.state.propertyType}/1`, 'val');
+    async chartData(){
+        var activeListings = await this.getDataFor(`/market/${this.state.location}/${this.state.community}/${this.state.propertyType}/1`, 'active');
+        var totalListings = await this.getDataFor(`/market/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'total');
+
+        this.setState({
+            series: [
+                activeListings,totalListings
+            ],
+        })
     }
+    
 
     componentWillReceiveProps(nextProps){
 
@@ -64,16 +73,13 @@ class RadialChartContainer extends Component {
                 .then(res => res.json())
                 .then(d => {
 
-                    if (value === 'val') {
+                    if (value === 'active' || value === 'total') {
 
-                        this.setState({
-                            series: [
-                                (d.ms * 100).toFixed(2)
-                            ],
-                        })
+                        return resolve((d.ms * 100).toFixed(2))
                     }
-                }).then(() => {
-                    return resolve();
+                    else{
+                        return resolve();
+                    }
                 }).catch((error) => {
                     return reject(error);
                 })
@@ -82,9 +88,7 @@ class RadialChartContainer extends Component {
 
     render() {
         return (
-
             React.createElement(RadialChart, { options: this.state.options, series: this.state.series })
-            
         );
     }
 }

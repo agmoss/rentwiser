@@ -8,8 +8,7 @@ class ScatterChartContainer extends Component {
 
     constructor(props) {
         super(props);
-        //this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
-        this.BASE_URL = 'http://localhost:8000/api';
+        this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
 
         this.state = {
             location: this.props.location,

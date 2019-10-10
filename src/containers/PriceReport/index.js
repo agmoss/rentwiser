@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Presentation Component
-import Report from '../../components/PriceReport';
+import PriceReport from '../../components/PriceReport';
 
-export default function PriceReport(props) {
+export default function PriceReportContainer(props) {
 
 	const [metrics, setMetrics] = useState({
 		mean: 0,
@@ -29,8 +29,6 @@ export default function PriceReport(props) {
 	}, [props.location, props.community, props.propertyType]); // Or [] if effect doesn't need props or state (place query here)
 
 	return (
-
-		React.createElement(Report, { mean: metrics.mean, max: metrics.max, min: metrics.min })
-
+		React.createElement(PriceReport, { mean: metrics.mean, max: metrics.max, min: metrics.min })
 	);
 }

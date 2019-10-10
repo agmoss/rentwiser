@@ -53,7 +53,10 @@ export default function MarketReport(props) {
 
                 <CardActions>
                     <Typography color="textSecondary" className={classes.depositContext}>
-                        {new Date().getTime()}
+                        Active Listings: {(props.active).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    </Typography>
+                    <Typography color="textSecondary" className={classes.depositContext}>
+                        Total Listings: {(props.total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </Typography>
                 </CardActions>
 
