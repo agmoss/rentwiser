@@ -80,12 +80,13 @@ class LineChartContainer extends Component {
 
     }
 
-    componentDidMount() {
-        this.chartData()
+    async componentDidMount() {
+        await this.chartData();
+        //this.props.updateLoading(false);
     }
 
-    chartData(){
-        this.getDataFor(`/ts/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'ts');
+    async chartData(){
+        await this.getDataFor(`/ts/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'ts');
     }
 
 

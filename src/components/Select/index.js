@@ -34,28 +34,24 @@ export const SelectDDL = (props) => {
     return (
 
         <React.Fragment>
-            {/* Select */}
+            {/* Select Buttons */}
             <Grid item xs={12} md={12} lg={12}>
                 <Paper>
                     <form className={classes.root} autoComplete="off">
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="location-simple">Location</InputLabel>
+                    <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="propertyType-simple">Property Type</InputLabel>
                             <Select
-                                value={props.location}
-                                onChange={props.handleLocationChange}
+                                value={props.propertyType}
+                                onChange={props.handlePtypeChange}
                                 inputProps={{
-                                    name: 'location',
-                                    id: 'location-simple',
+                                    name: 'propertyType',
+                                    id: 'propertyType-simple',
                                 }}
                             >
-                                <MenuItem value={'NW'}>NW</MenuItem>
-                                <MenuItem value={'NE'}>NE</MenuItem>
-                                <MenuItem value={'SW'}>SW</MenuItem>
-                                <MenuItem value={'SE'}>SW</MenuItem>
-                                <MenuItem value={'NW-Central'}>NW-Central</MenuItem>
-                                <MenuItem value={'NE-Central'}>NE-Central</MenuItem>
-                                <MenuItem value={'SW-Central'}>SW-Central</MenuItem>
-                                <MenuItem value={'SE-Central'}>SW-Central</MenuItem>
+                                <MenuItem value={'Apartment'}>Apartment</MenuItem>
+                                <MenuItem value={'Condo'}>Condo</MenuItem>
+                                <MenuItem value={'House'}>House</MenuItem>
+                                <MenuItem value={'Townhouse'}>Townhouse</MenuItem>
                             </Select>
                         </FormControl>
                         <FormControl className={classes.formControl}>
@@ -82,24 +78,7 @@ export const SelectDDL = (props) => {
                                 <MenuItem value={'Sunalta'}>Sunalta</MenuItem>
                             </Select>
                         </FormControl>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="propertyType-simple">Property Type</InputLabel>
-                            <Select
-                                value={props.propertyType}
-                                onChange={props.handlePtypeChange}
-                                inputProps={{
-                                    name: 'propertyType',
-                                    id: 'propertyType-simple',
-                                }}
-                            >
-                                <MenuItem value={'Apartment'}>Apartment</MenuItem>
-                                <MenuItem value={'Condo'}>Condo</MenuItem>
-                                <MenuItem value={'House'}>House</MenuItem>
-                                <MenuItem value={'Townhouse'}>Townhouse</MenuItem>
-                            </Select>
-                        </FormControl>
                     </form>
-
                 </Paper>
             </Grid>
 

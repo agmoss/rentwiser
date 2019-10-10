@@ -23,6 +23,19 @@ class ScatterChartContainer extends Component {
                     toolbar: {
                         show: false,
                     },
+                    animations: {
+                        enabled: true,
+                        easing: 'easeinout',
+                        speed: 100,
+                        animateGradually: {
+                            enabled: true,
+                            delay: 150
+                        },
+                        dynamicAnimation: {
+                            enabled: true,
+                            speed: 100
+                        }
+                    }
                 },
                 xaxis:{
                     title:{
@@ -44,16 +57,17 @@ class ScatterChartContainer extends Component {
         }
     }
 
-    componentDidMount() {
-
-        this.chartData()
-
+    async componentDidMount() {
+        
+        await this.chartData();
+        this.props.updateLoading(false);
+        
     }
 
 
-    chartData(){
+    async chartData(){
 
-        this.getDataFor(`/scatter/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'val');
+        await this.getDataFor(`/scatter/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'val');
 
     }
 

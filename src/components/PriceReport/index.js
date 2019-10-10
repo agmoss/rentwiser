@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 });
 
-export default function Report(props) {
+export default function PriceReport(props) {
 
 	const classes = useStyles();
 
@@ -72,7 +72,7 @@ export default function Report(props) {
 
 				<CardActions>
 					<Typography color="textSecondary" className={classes.depositContext}>
-						{new Date().getTime()}
+						On {new Date().toDateString()}
 					</Typography>
 				</CardActions>
 
