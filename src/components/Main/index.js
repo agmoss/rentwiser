@@ -25,6 +25,7 @@ import InformationIcon from '@material-ui/icons/Info';
 
 // Components
 import SampleContent from '../SampleContent';
+import MapContainer from '../../containers/MapContainer';
 import {Dashboard} from '../Dashboard';
 import { secondaryListItems } from '../ListItems';
 
@@ -128,7 +129,7 @@ export default function Main() {
 							case 'dashboard':
 								return <Dashboard fixedHeightPaper={fixedHeightPaper} fixedHeightPaper2={fixedHeightPaper2} classesPaper={classes.paper} />
 							case 'map':
-								return <SampleContent content={currentSelection} />
+								return <MapContainer/>
 							case 'about':
 								return <SampleContent content={currentSelection} />
 							default:
