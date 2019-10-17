@@ -10,24 +10,24 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home'
 import BarChartIcon from '@material-ui/icons/BarChart';
 import MapIcon from '@material-ui/icons/Map';
 import InformationIcon from '@material-ui/icons/Info';
-
+import PinIcon from '@material-ui/icons/PinDrop';
 
 // Components
 import SampleContent from '../SampleContent';
 import MapContainer from '../../containers/MapContainer';
-import {Dashboard} from '../Dashboard';
+import { Dashboard } from '../Dashboard';
 import { secondaryListItems } from '../ListItems';
+import About from '../About';
+import Home from '../Home';
 
 // Functions and Variables
 import { Copyright, ListItemLink } from '../../functions';
@@ -65,14 +65,10 @@ export default function Main() {
 					>
 						<MenuIcon />
 					</IconButton>
+					<PinIcon className={classes.icon} />
 					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
 						RentWiser
           			</Typography>
-					<IconButton color="inherit">
-						<Badge badgeContent={4} color="secondary">
-							<NotificationsIcon />
-						</Badge>
-					</IconButton>
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -125,13 +121,13 @@ export default function Main() {
 
 						switch (currentSelection) {
 							case 'home':
-								return <SampleContent content={currentSelection} />
+								return <Home />
 							case 'dashboard':
 								return <Dashboard fixedHeightPaper={fixedHeightPaper} fixedHeightPaper2={fixedHeightPaper2} classesPaper={classes.paper} />
 							case 'map':
-								return <MapContainer/>
+								return <MapContainer />
 							case 'about':
-								return <SampleContent content={currentSelection} />
+								return <About />
 							default:
 								return <SampleContent content={currentSelection} />
 						}

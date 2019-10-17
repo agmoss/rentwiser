@@ -62,10 +62,10 @@ export const Dashboard = (props) => {
                 <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange} />
 
                 {/* Rental Price Report */}
-                <PriceReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+                <PriceReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
                 {/* Rental Market Report */}
-                <MarketReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} />
+                <MarketReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
                 {/* Temporary */}
                 <ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />

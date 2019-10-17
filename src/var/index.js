@@ -83,4 +83,7 @@ export default makeStyles(theme => ({
 	fixedHeight2: {
 		height: 500,
 	},
+	icon: {
+		marginRight: theme.spacing(2),
+	},
 }));
