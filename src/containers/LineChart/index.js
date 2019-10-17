@@ -82,11 +82,11 @@ class LineChartContainer extends Component {
 
     async componentDidMount() {
         await this.chartData();
-        //this.props.updateLoading(false);
     }
 
     async chartData(){
         await this.getDataFor(`/ts/${this.state.location}/${this.state.community}/${this.state.propertyType}/0`, 'ts');
+        this.props.updateLoading(false);
     }
 
 
@@ -94,6 +94,8 @@ class LineChartContainer extends Component {
 
         // Prevent un necessary re-render
         if (nextProps.location !== this.state.location || nextProps.community !== this.state.community || nextProps.propertyType !== this.state.propertyType) {
+
+            this.props.updateLoading(true);
 
             this.setState({location: nextProps.location,community: nextProps.community, propertyType: nextProps.propertyType}, async () => {
                 this.chartData();

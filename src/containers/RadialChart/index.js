@@ -7,7 +7,6 @@ class RadialChartContainer extends Component {
 
     constructor(props) {
         super(props);
-        
         this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
         this.state = {
             location: this.props.location,
@@ -30,8 +29,8 @@ class RadialChartContainer extends Component {
     }
 
 
-    componentDidMount() {
-        this.chartData()
+    async componentDidMount() {
+        await this.chartData()
     }
 
     async chartData(){
@@ -45,7 +44,6 @@ class RadialChartContainer extends Component {
         })
     }
     
-
     componentWillReceiveProps(nextProps){
 
         // Prevent un necessary re-render
