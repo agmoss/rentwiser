@@ -51,7 +51,7 @@ class ScatterChartContainer extends Component {
             series: [
                 {
                     name: "Price/Sq Feet",
-                    data: null
+                    data: []
                 },
             ],
         }
