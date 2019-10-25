@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // Presentation Component
 import LineChart from '../../components/LineChart';
 
-
 var data = [];
 class LineChartContainer extends Component {
 

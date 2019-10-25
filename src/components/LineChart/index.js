@@ -10,7 +10,11 @@ import Paper from '@material-ui/core/Paper';
 
 class LineChart extends Component {
 
+    
+
     render() {
+
+        console.log(this.props.series);
 
         return (
 
