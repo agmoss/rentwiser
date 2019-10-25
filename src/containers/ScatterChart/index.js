@@ -67,7 +67,7 @@ class ScatterChartContainer extends Component {
         this.props.updateLoading(false);
     }
 
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
 
         // Prevent un necessary re-render
         if (nextProps.location !== this.state.location || nextProps.community !== this.state.community || nextProps.propertyType !== this.state.propertyType) {
