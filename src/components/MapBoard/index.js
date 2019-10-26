@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { SelectDDL } from '../Select';
 import MapContainer from '../../containers/MapContainer';
 
-
 export const MapBoard = (props) => {
 
     const [location, setLocation] = useState('all');
@@ -24,22 +23,14 @@ export const MapBoard = (props) => {
         setCommunity(event.target.value)
     }
 
-
     /**
      * **Render the presentation component**
      */
     return (
-
         <React.Fragment>
-
-            {/* Select Buttons */}
             <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange} />
-
             <MapContainer location={location} community={community} propertyType={propertyType} />
-
-
         </React.Fragment>
-
     )
 
 }

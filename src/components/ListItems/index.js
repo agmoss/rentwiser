@@ -38,7 +38,7 @@ export const mainListItems = (
 		</ListItemLink>
 		<ListItemLink button href="/about">
 			<ListItemIcon>
-				<InformationIcon/>
+				<InformationIcon />
 			</ListItemIcon>
 			<ListItemText primary="About" />
 		</ListItemLink>

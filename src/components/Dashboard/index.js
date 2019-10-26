@@ -16,67 +16,67 @@ import LoadingOverlay from 'react-loading-overlay';
 
 export const Dashboard = (props) => {
 
-    const [location, setLocation] = useState('all');
-    const [community, setCommunity] = useState('all');
-    const [propertyType, setPropertyType] = useState('all');
+	const [location, setLocation] = useState('all');
+	const [community, setCommunity] = useState('all');
+	const [propertyType, setPropertyType] = useState('all');
 
-    const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
 
-    function handlePtypeChange(event) {
-        setPropertyType(event.target.value)
-    }
+	function handlePtypeChange(event) {
+		setPropertyType(event.target.value)
+	}
 
-    // Not in use
-    function handleLocationChange(event) {
-        setLocation(event.target.value)
-    }
+	// Not in use
+	function handleLocationChange(event) {
+		setLocation(event.target.value)
+	}
 
-    function handleCommunityChange(event) {
-        setCommunity(event.target.value)
-    }
+	function handleCommunityChange(event) {
+		setCommunity(event.target.value)
+	}
 
-    function updateLoading(status) {
-        setLoading(status)
-    }
+	function updateLoading(status) {
+		setLoading(status)
+	}
 
     /**
      * **Render the presentation component**
      */
-    return (
+	return (
 
-        <React.Fragment>
+		<React.Fragment>
 
-            {/* Loading Spinner */}
-            <LoadingOverlay
-                active={loading}
-                styles={{
-                    wrapper: {}
-                }}
-                spinner
-                text='Loading ...'
-            ></LoadingOverlay>
+			{/* Loading Spinner */}
+			<LoadingOverlay
+				active={loading}
+				styles={{
+					wrapper: {}
+				}}
+				spinner
+				text='Loading ...'
+			></LoadingOverlay>
 
-            <Grid container spacing={3}>
+			<Grid container spacing={3}>
 
-                {/* Select Buttons */}
-                <SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange} />
+				{/* Select Buttons */}
+				<SelectDDL location={location} community={community} propertyType={propertyType} handleLocationChange={handleLocationChange} handleCommunityChange={handleCommunityChange} handlePtypeChange={handlePtypeChange} />
 
-                {/* Rental Price Report */}
-                <PriceReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
+				{/* Rental Price Report */}
+				<PriceReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
-                {/* Rental Market Report */}
-                <MarketReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
+				{/* Rental Market Report */}
+				<MarketReportContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
-                {/* Temporary */}
-                <ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
+				{/* Temporary */}
+				<ScatterChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
-                {/* Line Chart */}
-                <LineChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading}  />
+				{/* Line Chart */}
+				<LineChartContainer fixedHeightPaper={props.fixedHeightPaper} location={location} community={community} propertyType={propertyType} updateLoading={updateLoading} />
 
-            </Grid>
+			</Grid>
 
-        </React.Fragment>
+		</React.Fragment>
 
-    )
+	)
 
 }

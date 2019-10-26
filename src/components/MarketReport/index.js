@@ -13,56 +13,56 @@ import CardHeader from '@material-ui/core/CardHeader';
 import RadialChartContainer from '../../containers/RadialChart';
 
 const useStyles = makeStyles({
-    depositContext: {
-        flex: 1,
-    },
-    card: {
-        minWidth: 275,
-        minHeight: '100%'
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 1,
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
+	depositContext: {
+		flex: 1,
+	},
+	card: {
+		minWidth: 275,
+		minHeight: '100%'
+	},
+	title: {
+		fontSize: 14,
+	},
+	pos: {
+		marginBottom: 1,
+	},
+	media: {
+		height: 0,
+		paddingTop: '56.25%', // 16:9
+	},
 });
 
 export default function MarketReport(props) {
 
-    const classes = useStyles();
+	const classes = useStyles();
 
-    return (
+	return (
 
-        <Grid item xs={12} md={4} lg={3}>
+		<Grid item xs={12} md={4} lg={3}>
 
-            <Card className={classes.card}>
+			<Card className={classes.card}>
 
-                <CardHeader 
-                    color="primary"
-                    title="Market Report"
-                />
+				<CardHeader
+					color="primary"
+					title="Market Report"
+				/>
 
-                <CardMedia>
-                    <RadialChartContainer location={props.location} community={props.community} propertyType={props.propertyType} />
-                </CardMedia>
+				<CardMedia>
+					<RadialChartContainer location={props.location} community={props.community} propertyType={props.propertyType} />
+				</CardMedia>
 
-                <CardActions>
-                    <Typography color="textSecondary" className={classes.depositContext}>
-                        Active Listings: {(props.active).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                    </Typography>
-                    <Typography color="textSecondary" className={classes.depositContext}>
-                        Total Listings: {(props.total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                    </Typography>
-                </CardActions>
+				<CardActions>
+					<Typography color="textSecondary" className={classes.depositContext}>
+						Active Listings: {(props.active).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+					</Typography>
+					<Typography color="textSecondary" className={classes.depositContext}>
+						Total Listings: {(props.total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+					</Typography>
+				</CardActions>
 
-            </Card>
+			</Card>
 
-        </Grid>
+		</Grid>
 
-    );
+	);
 }

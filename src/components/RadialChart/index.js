@@ -10,18 +10,15 @@ import Paper from '@material-ui/core/Paper';
 
 class RadialChart extends Component {
 
-
-    render() {
-        return (
-
-            <Grid item xs={12} md={12} lg={12}>
-                <Paper className={this.props.fixedHeightPaper}>
-                    <ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="225" />
-                </Paper>
-            </Grid>
-
-        );
-    }
+	render() {
+		return (
+			<Grid item xs={12} md={12} lg={12}>
+				<Paper className={this.props.fixedHeightPaper}>
+					<ReactApexChart options={this.props.options} series={this.props.series} type="radialBar" height="225" />
+				</Paper>
+			</Grid>
+		);
+	}
 }
 
 export default RadialChart;
