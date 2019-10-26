@@ -23,7 +23,7 @@ import PinIcon from '@material-ui/icons/PinDrop';
 
 // Components
 import SampleContent from '../SampleContent';
-import MapContainer from '../../containers/MapContainer';
+import { MapBoard } from '../../components/MapBoard';
 import { Dashboard } from '../Dashboard';
 import { secondaryListItems } from '../ListItems';
 import About from '../About';
@@ -125,7 +125,7 @@ export default function Main() {
 							case 'dashboard':
 								return <Dashboard fixedHeightPaper={fixedHeightPaper} fixedHeightPaper2={fixedHeightPaper2} classesPaper={classes.paper} />
 							case 'map':
-								return <MapContainer />
+								return <MapBoard />
 							case 'about':
 								return <About />
 							default:

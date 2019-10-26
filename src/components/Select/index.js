@@ -38,7 +38,7 @@ export const SelectDDL = (props) => {
             <Grid item xs={12} md={12} lg={12}>
                 <Paper>
                     <form className={classes.root} autoComplete="off">
-                    <FormControl className={classes.formControl}>
+                        <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="propertyType-simple">Property Type</InputLabel>
                             <Select
                                 value={props.propertyType}

@@ -9,6 +9,9 @@ class MapContainer extends Component {
         super(props);
         this.BASE_URL = 'https://api-cr.azurewebsites.net/api';
         this.state = {
+            location: this.props.location,
+            community:this.props.community,
+            propertyType:this.props.propertyType,
             data: [],
         }
     }
@@ -18,7 +21,7 @@ class MapContainer extends Component {
     }
 
     async mapData() {
-        var data = await this.getDataFor(`/map/all/all/all/1`, 'data');
+        var data = await this.getDataFor(`/map/${this.state.location}/${this.state.community}/${this.state.propertyType}/1`, 'data');
 
         this.setState({
             data: data
@@ -63,6 +66,7 @@ class MapContainer extends Component {
                 })
         })
     }
+
 
     render() {
         return (

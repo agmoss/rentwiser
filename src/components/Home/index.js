@@ -28,33 +28,28 @@ export default function Home() {
     return (
         <React.Fragment>
             <CssBaseline />
-            <main>
-                {/* Hero unit */}
-                <div className={classes.heroContent}>
-                    <Container maxWidth="sm">
-                        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                            RentWiser
+            <div className={classes.heroContent}>
+                <Container maxWidth="sm">
+                    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                        RentWiser
                         </Typography>
-                        <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                            A free and open source tool for rental property analysis!
+                    <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                        A free and open source tool for rental property analysis!
                         </Typography>
-                    </Container>
-                </div>
-                <div className={classes.content}>
-                    <Container maxWidth="md">
-                        <Grid container spacing={4} justify="space-evenly">
-                            <img alt="Appart" src={process.env.PUBLIC_URL + '/appartments.png'} width="250" height="250" />
-                        </Grid>
-                    </Container>
-                </div>
-            </main>
-            {/* Footer */}
+                </Container>
+            </div>
+            <div className={classes.content}>
+                <Container maxWidth="md">
+                    <Grid container spacing={4} justify="space-evenly">
+                        <img alt="Appart" src={process.env.PUBLIC_URL + '/appartments.png'} width="200" height="200" />
+                    </Grid>
+                </Container>
+            </div>
             <footer className={classes.footer}>
                 <Typography variant="h6" align="center" gutterBottom>
                     This is a work in progress
                 </Typography>
             </footer>
-            {/* End footer */}
         </React.Fragment>
     );
 }

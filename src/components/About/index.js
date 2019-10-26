@@ -40,7 +40,7 @@ export default function About() {
                 </div>
                 <div className={classes.content}>
                 <Container  maxWidth="md">
-                    <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                    <Typography variant="h5" align="left" color="textSecondary" paragraph>
                         Rentwiser consists of three independent software repositories,
                         one for data collection, one for REST API's,  and one for the analytical web application.
                         The data collection repository is an ETL pipeline written in Python with a MySQL backend. The web
@@ -48,18 +48,7 @@ export default function About() {
                     </Typography>
                 </Container>
                 </div>
-
             </main>
-            {/* Footer */}
-            <footer className={classes.footer}>
-                <Typography variant="h6" align="center" gutterBottom>
-                    Footer
-                </Typography>
-                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                    Something here to give the footer a purpose!
-                </Typography>
-            </footer>
-            {/* End footer */}
         </React.Fragment>
     );
 }

@@ -13,6 +13,8 @@ import {
 	Tooltip,
 } from "react-leaflet";
 
+//import HeatmapLayer from 'react-leaflet-heatmap-layer';
+
 import "leaflet/dist/leaflet.css";
 
 
@@ -41,12 +43,18 @@ export default function ListingMap(props) {
 					center={[51.0486, -114.0708]}>
 					<TileLayer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
+					{/* <HeatmapLayer
+						points={props.mapData}
+						longitudeExtractor={m => m.longitude}
+						latitudeExtractor={m => m.latitude}
+						intensityExtractor={m => parseFloat(m.price)} /> */}
+
 					{props.mapData.map((listing) => {
 						return (
 							<CircleMarker
 								center={[listing.latitude, listing.longitude]}
-								radius={3}
-								fillOpacity={0.8}
+								radius={4}
+								fillOpacity={1}
 								stroke={false}
 							>
 								<Tooltip direction="right" offset={[-8, -2]} opacity={1}>
