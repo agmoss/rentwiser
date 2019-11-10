@@ -33,7 +33,7 @@ jobs:
           command: docker build -t $IMAGE_NAME:latest .
       - run:
           name: Docker Login
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS $REGISTRY_NAME
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS $LOGIN_SERVER
       - run:
           name: Push Docker Image
           command: docker push $IMAGE_NAME:latest
